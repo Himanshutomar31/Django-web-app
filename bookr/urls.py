@@ -17,10 +17,11 @@ from django.contrib import admin
 from django.urls import path
 
 import reviews.views
-from reviews.views import book_list
+from reviews.views import book_list, book_details, index
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    #path('', index),
+    path('', index),
     path('books/', book_list, name='book_list'),
+    path(r'book/<int:id>/', book_details, name='book_details')
 ]
