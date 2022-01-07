@@ -1,0 +1,23 @@
+{% extends 'reviews/base.html' %}
+
+{% block content %}
+<h3>Search Books</h3>
+<form method="post">
+ {% csrf_token %}
+ {{ form.as_p }}
+  <button class="btn btn-primary my-2 my-sm-0" type="submit">Search</button>
+</form>
+<ul class="list-group">
+  {% for item in book_list %}
+  <li class="list-group-item">
+      <span class="text-info">Title: </span> <span>{{ item.title }}</span>
+      <br>
+      <span class="text-info">Publisher: </span><span>{{ item.publisher }}</span>
+      <br>
+      <span class="text-info">Publication Date: </span><span>{{ item.publication_date }}</span>
+      <br>
+      <a class="btn btn-primary btn-sm active" role="button" aria-pressed="true" href="/book/{{ item.id }}/">Reviews</a></li>
+  </li>
+  {% endfor %}
+</ul>
+{% endblock %}
